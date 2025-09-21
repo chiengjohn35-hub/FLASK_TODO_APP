@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% with messages= get_flashed_messages(with_categories=true)%}
+    {% if messages %}
+        {% for category, meg in messages%}
+            <p style="text-align:left;">{{meg}}<span style="color:red;"></span></p>
+        {% endfor %}
+    {%endif %}
+{% endwith %}
+
+
+{% block content %}
+
+<h1>{% block title%} LOGIN{% endblock title%}</h1>
+<div class="login.form">
+    <form method="post" action="{{ url_for('auth.login') }}">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter Your Username" required>
+        <br>
+        <br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="username" checked required>
+        <br>
+        <br>
+        <input type="submit" value="LOGIN">
+    </form>
+</div>
+{% endblock content %}
